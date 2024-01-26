@@ -31,8 +31,8 @@ theme: ["PaperMod"]
 ```
 ## 文章模板
 hugo的模板文件位于archetypes文件夹中，其中有一个default.md文件，修改内容如下
-```
----yml
+```yml
+---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 lastmod: {{ .Date }}
@@ -103,7 +103,7 @@ params:
   disableThemeToggle: false
 
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
@@ -139,12 +139,8 @@ params:
     Content: 玄都观里花千树，尽是刘郎去后栽
 
   socialIcons:
-    - name: x
-      url: "https://x.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/Meepoljd"
 
   analytics:
     google:
@@ -172,6 +168,10 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 10
     - identifier: archives
       name: Archive
       url: /archives/
