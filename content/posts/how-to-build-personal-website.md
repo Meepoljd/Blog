@@ -29,6 +29,48 @@ git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth
 ```
 theme: ["PaperMod"]
 ```
+## 文章模板
+hugo的模板文件位于archetypes文件夹中，其中有一个default.md文件，修改内容如下
+```
+---yml
+title: "{{ replace .Name "-" " " | title }}"
+date: {{ .Date }}
+lastmod: {{ .Date }}
+author: ["jiandong.liu93"]
+
+categories:
+- category 1
+- category 2
+
+tags:
+- tag 1
+- tag 2
+
+keywords:
+- word 1
+- word 2
+
+description: "" # 文章描述，与搜索优化相关
+summary: "" # 文章简单描述，会展示在主页
+weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+slug: ""
+draft: true # 是否为草稿
+comments: false
+showToc: true # 显示目录
+TocOpen: true # 自动展开目录
+autonumbering: true # 目录自动编号
+hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
+disableShare: true # 底部不显示分享栏
+searchHidden: true # 该页面可以被搜索到
+showbreadcrumbs: true #顶部显示当前路径
+mermaid: true
+cover:
+    image: ""
+    caption: ""
+    alt: ""
+    relative: false
+---
+```
 ## 自定义
 为网站进行一些个性化的配置，比如上几个要饭的二维码。可以使用主题官方提供的[配置文件模板](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml)。
 ```yaml
@@ -67,13 +109,14 @@ params:
   ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
+  ShowFullTextinRSS: true
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
   comments: false
   hidemeta: false
   hideSummary: false
-  showtoc: false
+  showtoc: true
   tocopen: false
 
   assets:
@@ -116,11 +159,6 @@ params:
     hiddenInList: true # hide on list pages and home
     hiddenInSingle: true # hide on single page
 
-  editPost:
-    URL: "https://github.com/Meepoljd/meepoljd.github.io/content"
-    Text: "评论内容" # edit text
-    appendFilePath: true # to append file path to Edit link
-
   # for search
   # https://fusejs.io/api/options.html
   fuseOpts:
@@ -134,12 +172,12 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: categories
-      name: 目录
-      url: /categories/
+    - identifier: archives
+      name: Archive
+      url: /archives/
       weight: 10
     - identifier: tags
-      name: 标签
+      name: Tags
       url: /tags/
       weight: 20
 
@@ -166,7 +204,7 @@ outputs:
     - JSON # necessary for search
 ```
 之后在content中新建search.md文件，并插入如下内容
-```md
+```yml
 ---
 title: "Search" # in any language you want
 layout: "search" # necessary for search
@@ -176,6 +214,17 @@ summary: "search"
 placeholder: "placeholder text in search input box"
 ---
 ```
+## 归档页
+根据[官方文档](https://github.com/adityatelange/hugo-PaperMod/wiki/Features#archives-layout)，向content目录下插入archives.md文件。插入内容
+```yml
+---
+title: "Archive"
+layout: "archives"
+url: "/archives/"
+summary: archives
+---
+```
+## 社交媒体配置
 
 # 更新部署
 ## GitPage
