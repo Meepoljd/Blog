@@ -1,12 +1,9 @@
 +++
-title: "尝试读懂Go ASM"
-date: 2024-01-28T22:53:59+08:00
-lastmod: 2024-01-28T22:53:59+08:00
-author: ["jiandong.liu93"]
-
-tags:
-- golang
-
+title = "尝试读懂Go ASM"
+date = 2024-01-28T22:53:59+08:00
+lastmod = 2024-01-28T22:53:59+08:00
+author = ["jiandong.liu93"]
+tags = ["golang"]
 +++
 
 # 问题
