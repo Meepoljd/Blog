@@ -4,31 +4,68 @@ date = 2024-01-28T22:53:59+08:00
 lastmod = 2024-01-28T22:53:59+08:00
 author = ["jiandong.liu93"]
 tags = ["golang"]
+draft = true
 +++
 
 # 问题
+
 某同学在日常工作中写出了一段十分诡异的代码，在CR中产生的激烈讨论。
+
 ```go
 var a = map[string]string{}
 
 func main() {
-	go func() {
-		v := a["key1"]
-		log.Println(v)
-	}()
+    go func() {
+        v := a["key1"]
+        log.Println(v)
+    }()
 
-	go func() {
-		b := make(map[string]string)
-		a = b
-	}()
+    go func() {
+        b := make(map[string]string)
+        a = b
+    }()
 }
 ```
+
 显然，在工作中写出这种有明显争议的代码是十分不好的，但如何证明这段代码确实不会panic也确实是个问题。
+
 # 思路
+
 与其研究各种语法特性，不如借机研究一下Go的汇编，通过更底层的行为描述确认运行时的行为。
 
-
 # 验证
+
+以下代码解释参考了GPT的结果，AI改变世界~
+
+Go汇编引入了4个伪寄存器，这4个寄存器时编译器用来维护上下文、特殊标识等作用的
+
+- FP(Frame pointer):记录栈帧的初始地址，用于访问函数的参数与局部变量
+
+- PC(Program counter):记录当前正在执行的指令，控制执行流程
+
+- SB(Static base pointer):SB指向了可执行程序的数据段的开始。用于访问全局变量和函数地址。
+
+- SP(Stack pointer):栈顶，用于管理调用栈
+
+首先声明一个main方法
+
+```
+0x0000 00000 (main.go:5)  TEXT    main.main(SB), ABIInternal, $32-0
+// TEXT 包名.方法名(SB 这是基于静态地址的数据), ABIInternal, $栈帧大小-参数及返回值大小
+        
+```
+
+栈帧大小如何计算
+
+```go
+PCDATA  $0, $-2
+CMP     R16, RSP
+BLS     60          // Branch if Lower or Same
+PCDATA  $0, $-1
+```
+
+一段费解的代码，由于CMP命令会产生标志位变化，但不会计算得到一个值，为了垃圾回收器和其他运行时组件能够正确地解释生成的代码，使用PCDATA命令插入一个标记。
+
 ```go
 main.main STEXT size=80 args=0x0 locals=0x18 funcid=0x0 align=0x0
         0x0000 00000 (main.go:5)  TEXT    main.main(SB), ABIInternal, $32-0
@@ -350,4 +387,13 @@ main.main.func2·f SRODATA dupok size=8
 gclocals·g2BeySu+wFnoycgXfElmcg== SRODATA dupok size=8
         0x0000 01 00 00 00 00 00 00 00                          ........
 ```
+
 # 总结
+
+# 引用
+
+[走进Golang之编译器原理 | 小米信息部技术团队 (xiaomi-info.github.io)](https://xiaomi-info.github.io/2019/11/13/golang-compiler-principle/)
+
+[走进Golang之运行与Plan9汇编 | 小米信息部技术团队 (xiaomi-info.github.io)](https://xiaomi-info.github.io/2019/11/27/golang-compiler-plan9/)
+
+[golang-notes/assembly.md at master · cch123/golang-notes · GitHub](https://github.com/cch123/golang-notes/blob/master/assembly.md)
