@@ -2,35 +2,53 @@
 title = '使用Hugo快速搭建一个免费的静态博客'
 date = 2024-01-23T20:52:53+08:00
 +++
+
 > 为了方便迁移，不被各种笔记软件绑架，所以最近将笔记内容都迁移到一个Markdown仓库进行管理。顺便的使用Hugo将这些笔记搭建一个个人博客。
 > 
 > 本文用于记录搭建过程中的一些操作，面向有开发基础的同学，不会再讲解什么是Git。
+
 # 环境搭建
+
 1. Git
+
 2. 一个顺手的编辑器（为什么不试试Emacs呢）
-## hugo
-安装Hugo，Mac用户可以直接
-```
-brew install hugo
-```
-为了方便使用，在创建站点时加入```--format yaml```，来指定配置文件的格式
-```
-hugo new site MyWebsite --format yaml
-```
-Hugo 会在目录查找一个 config.toml 的配置文件。如果这个文件不存在，将会查找 config.yaml，然后是 config.json 。
-## 主题配置
-审美问题，实在不知道选什么，所以选择了一个人气较高的主题PaperMod。参考[官方文档](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation)来进行安装。
+   
+   ## hugo
+   
+   安装Hugo，Mac用户可以直接
+   
+   ```
+   brew install hugo
+   ```
+   
+   为了方便使用，在创建站点时加入```--format yaml```，来指定配置文件的格式
+   
+   ```
+   hugo new site MyWebsite --format yaml
+   ```
+   
+   Hugo 会在目录查找一个 config.toml 的配置文件。如果这个文件不存在，将会查找 config.yaml，然后是 config.json 。
+   
+   ## 主题配置
+   
+   审美问题，实在不知道选什么，所以选择了一个人气较高的主题PaperMod。参考[官方文档](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation)来进行安装。
 
 Hugo的主题被存放在 MyWebsite/themes 目录下，可使用git clone 将代码拉下来
+
 ```
 git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
 ```
+
 在 config.yml 加入如下的内容来指定使用的主题
+
 ```
 theme: ["PaperMod"]
 ```
+
 ## 文章模板
+
 hugo的模板文件位于archetypes文件夹中，其中有一个default.md文件，修改内容如下
+
 ```yml
 ---
 title: "{{ replace .Name "-" " " | title }}"
@@ -71,8 +89,11 @@ cover:
     relative: false
 ---
 ```
+
 ## 自定义
+
 为网站进行一些个性化的配置，比如上几个要饭的二维码。可以使用主题官方提供的[配置文件模板](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml)。
+
 ```yaml
 baseURL: "https://meepoljd.github.io/"
 title: 老东叔写代码
@@ -192,10 +213,13 @@ markup:
     # lineNos: true
     # style: monokai
 ```
+
 ## 搜索功能
+
 根据[官网文档](https://github.com/adityatelange/hugo-PaperMod/wiki/Features#search-page)，需要插入一个页面进行配置。
 
 向config.yml中添加如下内容
+
 ```yml
 outputs:
   home:
@@ -203,7 +227,9 @@ outputs:
     - RSS
     - JSON # necessary for search
 ```
+
 之后在content中新建search.md文件，并插入如下内容
+
 ```yml
 ---
 title: "Search" # in any language you want
@@ -214,8 +240,11 @@ summary: "search"
 placeholder: "placeholder text in search input box"
 ---
 ```
+
 ## 归档页
+
 根据[官方文档](https://github.com/adityatelange/hugo-PaperMod/wiki/Features#archives-layout)，向content目录下插入archives.md文件。插入内容
+
 ```yml
 ---
 title: "Archive"
@@ -224,14 +253,21 @@ url: "/archives/"
 summary: archives
 ---
 ```
+
 # 更新部署
+
 ## GihubPages
+
 在跟老婆申请换了电脑之后，就没有预算购买服务器了。因此选择将网站部署在免费的[Github pages](https://docs.github.com/zh/pages/getting-started-with-github-pages)。
+
 > GitHub Pages 是一项静态站点托管服务，它直接从 GitHub 上的仓库获取 HTML、CSS 和 JavaScript 文件，（可选）通过构建过程运行文件，然后发布网站。 可以在 GitHub Pages 示例集合中看到 GitHub Pages 站点的示例。
+
 ## Github Action
+
 为了实现推送代码后，自动部署更新网站。参考Hugo官网推荐的方案，配置Github Action。
 
 在网站根目录内创建```.github/workflows/hugo.yaml```文件，复制如下内容。
+
 ```yml
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: Deploy Hugo site to Pages
@@ -314,4 +350,5 @@ jobs:
 ```
 
 # Finally
+
 一个简易的个人博客就搭建完成了
