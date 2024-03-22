@@ -11,24 +11,8 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Mar 2024 09:26:45 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jan 2024 20:52:53 +0800</lastBuildDate>
     <atom:link href="https://meepoljd.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Interior Finish</title>
-      <link>https://meepoljd.github.io/posts/interior-finish/</link>
-      <pubDate>Thu, 21 Mar 2024 09:26:45 +0800</pubDate>
-      <guid>https://meepoljd.github.io/posts/interior-finish/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    <item>
-      <title>What Is Apaas</title>
-      <link>https://meepoljd.github.io/posts/what-is-apaas/</link>
-      <pubDate>Wed, 20 Mar 2024 19:11:14 +0800</pubDate>
-      <guid>https://meepoljd.github.io/posts/what-is-apaas/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
     <item>
       <title>使用Hugo快速搭建一个免费的静态博客</title>
       <link>https://meepoljd.github.io/posts/how-to-build-personal-website/</link>
@@ -36,7 +20,9 @@
       <guid>https://meepoljd.github.io/posts/how-to-build-personal-website/</guid>
       <description>为了方便迁移，不被各种笔记软件绑架，所以最近将笔记内容都迁移到一个Markdown仓库进行管理。顺便的使用Hugo将这些笔记搭建一个个人博客。
 本文用于记录搭建过程中的一些操作，面向有开发基础的同学，不会再讲解什么是Git。
-环境搭建 Git 一个顺手的编辑器（为什么不试试Emacs呢） hugo 安装Hugo，Mac用户可以直接
+环境搭建 Git
+一个顺手的编辑器（为什么不试试Emacs呢）
+hugo 安装Hugo，Mac用户可以直接
 brew install hugo 为了方便使用，在创建站点时加入--format yaml，来指定配置文件的格式
 hugo new site MyWebsite --format yaml Hugo 会在目录查找一个 config.toml 的配置文件。如果这个文件不存在，将会查找 config.yaml，然后是 config.json 。
 主题配置 审美问题，实在不知道选什么，所以选择了一个人气较高的主题PaperMod。参考官方文档来进行安装。
@@ -50,9 +36,11 @@ theme: [&amp;#34;PaperMod&amp;#34;] 文章模板 hugo的模板文件位于archet
 </blockquote>
 <h1 id="环境搭建">环境搭建</h1>
 <ol>
-<li>Git</li>
-<li>一个顺手的编辑器（为什么不试试Emacs呢）</li>
-</ol>
+<li>
+<p>Git</p>
+</li>
+<li>
+<p>一个顺手的编辑器（为什么不试试Emacs呢）</p>
 <h2 id="hugo">hugo</h2>
 <p>安装Hugo，Mac用户可以直接</p>
 <pre tabindex="0"><code>brew install hugo
@@ -61,6 +49,8 @@ theme: [&amp;#34;PaperMod&amp;#34;] 文章模板 hugo的模板文件位于archet
 </code></pre><p>Hugo 会在目录查找一个 config.toml 的配置文件。如果这个文件不存在，将会查找 config.yaml，然后是 config.json 。</p>
 <h2 id="主题配置">主题配置</h2>
 <p>审美问题，实在不知道选什么，所以选择了一个人气较高的主题PaperMod。参考<a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Installation">官方文档</a>来进行安装。</p>
+</li>
+</ol>
 <p>Hugo的主题被存放在 MyWebsite/themes 目录下，可使用git clone 将代码拉下来</p>
 <pre tabindex="0"><code>git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
 </code></pre><p>在 config.yml 加入如下的内容来指定使用的主题</p>
