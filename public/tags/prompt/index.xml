@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prompt on 老东叔写代码</title>
+    <link>https://meepoljd.github.io/tags/prompt/</link>
+    <description>Recent content in Prompt on 老东叔写代码</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 27 Jun 2024 21:40:27 +0800</lastBuildDate><atom:link href="https://meepoljd.github.io/tags/prompt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prompt工程入门</title>
+      <link>https://meepoljd.github.io/posts/prompt%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 27 Jun 2024 21:40:27 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/posts/prompt%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>本文主要内容主要来自于吴恩达的《ChatGPT Prompt Engineering for Developers》，并省略了其中的代码内容
+概念补全  LLM：  Base LLM：通过大量训练数据，来预测下一句话 Instruction Tune LLM：被训练的可以遵循指令  RLHF：从人类反馈中学习      提供精确的指令 很多时候模型不能正常工作，或者不和预期，是因为指令不够精确导致的。 清晰并不等价于短，有时候长的指令会更加清晰明确
+ 使用分界符区分指令与数据，并对各个部分进行标注分割，例如“总结反引号包含的内容”，同时这也可以防止指令注入 要求结构化的输出，例如“使用包含如下Key的JSON返回，key1，key2”，清晰美观，程序可以直接处理 使用先验知识，让模型进行前置的条件检查，而不是让他瞎编。例如“如果输入内容不包含xxx，返回xxx” 向模型提供一些正确处理的例子，并要求的执行同样的任务。例如“进行同样风格的回答：xxxxx”  让模型有时间思考 算力问题，我们不希望模型着急回答，而是引导其思考。 本质上来说是因为模型没有办法像人一样快速地推导出求解流程，需要通过提示词工程，将人类思考的逻辑注入进来，来加快求解。
+ 明确执行步骤，例如“步骤1xxx；步骤2xxxx” 要求模型先自行解答，例如对一个问题，判定答案是否正确。这一条更像是判断类型下的一个执行步骤优化。  模型的局限性 尽管模型接触到了大量的训练数据，但是他并不清楚自己知识的边界是什么。也就是瞎编内容，称Hallucination幻觉。 一个从输入预测输出的机器，可以总是能输出一些内容，哪怕这些内容都是瞎编的。 解决这个问题的思路：首先找到相关信息，并引用他们来回答问题，追溯到参考文献后幻觉少了很多。
+如何不断迭代提示词 一次写出要给完美的提示词是不现实的，我们必须学会如何不断地迭代优化现有提示，并最终达成目标。 如何迭代：Idea-&amp;gt;Implementation-&amp;gt;Experimental Result-&amp;gt;Error Analysis-&amp;gt;Idea 如何进行Error Analysis：这里并没有一大套方法论，更像是一个阅读题。你阅读模型的返回，像一个无耻的甲方一样提出修改意见。当然，后面修改的乙方也是你。
+四项常用的能力  总结 推理 转换 扩展  Temperature 一个模型的参数，会影响相应的随机性或者说多样性 例如输入我最爱吃的食物，Temperature为0是会选择输出评分最高的答案披萨。 我们提升Temperature后，排序靠后的一些答案也会被输出，这个参数解决答案的“饥饿”问题。 构建可靠可预测的系统时，这个参数应被设置为0
+多轮对话的构成 我们每一次提交的message包含如下几个部分
+{ &amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;你好&amp;#34; } #+end_src&amp;gt; 其中role有三种，分别为system，assistant，user。 user代表用户的输入内容，assistant是模型的输出内容，system用于对assistant进行声明设定，是层次更高程的meta。 那么一段对话可以表示为： #+begin_src json [ { &amp;#34;role&amp;#34;: &amp;#34;system&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;你是一个逗逼&amp;#34; }, { &amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;给我讲个笑话&amp;#34; }, { &amp;#34;role&amp;#34;: &amp;#34;assistant&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;从前.</description>
+    </item>
+    
+  </channel>
+</rss>

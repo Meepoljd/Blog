@@ -4,331 +4,128 @@
     <title>老东叔写代码</title>
     <link>https://meepoljd.github.io/</link>
     <description>Recent content on 老东叔写代码</description>
-    <image>
-      <title>老东叔写代码</title>
-      <url>https://meepoljd.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://meepoljd.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 23 Jan 2024 20:52:53 +0800</lastBuildDate>
-    <atom:link href="https://meepoljd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jun 2024 21:40:27 +0800</lastBuildDate><atom:link href="https://meepoljd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prompt工程入门</title>
+      <link>https://meepoljd.github.io/posts/prompt%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 27 Jun 2024 21:40:27 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/posts/prompt%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>本文主要内容主要来自于吴恩达的《ChatGPT Prompt Engineering for Developers》，并省略了其中的代码内容
+概念补全  LLM：  Base LLM：通过大量训练数据，来预测下一句话 Instruction Tune LLM：被训练的可以遵循指令  RLHF：从人类反馈中学习      提供精确的指令 很多时候模型不能正常工作，或者不和预期，是因为指令不够精确导致的。 清晰并不等价于短，有时候长的指令会更加清晰明确
+ 使用分界符区分指令与数据，并对各个部分进行标注分割，例如“总结反引号包含的内容”，同时这也可以防止指令注入 要求结构化的输出，例如“使用包含如下Key的JSON返回，key1，key2”，清晰美观，程序可以直接处理 使用先验知识，让模型进行前置的条件检查，而不是让他瞎编。例如“如果输入内容不包含xxx，返回xxx” 向模型提供一些正确处理的例子，并要求的执行同样的任务。例如“进行同样风格的回答：xxxxx”  让模型有时间思考 算力问题，我们不希望模型着急回答，而是引导其思考。 本质上来说是因为模型没有办法像人一样快速地推导出求解流程，需要通过提示词工程，将人类思考的逻辑注入进来，来加快求解。
+ 明确执行步骤，例如“步骤1xxx；步骤2xxxx” 要求模型先自行解答，例如对一个问题，判定答案是否正确。这一条更像是判断类型下的一个执行步骤优化。  模型的局限性 尽管模型接触到了大量的训练数据，但是他并不清楚自己知识的边界是什么。也就是瞎编内容，称Hallucination幻觉。 一个从输入预测输出的机器，可以总是能输出一些内容，哪怕这些内容都是瞎编的。 解决这个问题的思路：首先找到相关信息，并引用他们来回答问题，追溯到参考文献后幻觉少了很多。
+如何不断迭代提示词 一次写出要给完美的提示词是不现实的，我们必须学会如何不断地迭代优化现有提示，并最终达成目标。 如何迭代：Idea-&amp;gt;Implementation-&amp;gt;Experimental Result-&amp;gt;Error Analysis-&amp;gt;Idea 如何进行Error Analysis：这里并没有一大套方法论，更像是一个阅读题。你阅读模型的返回，像一个无耻的甲方一样提出修改意见。当然，后面修改的乙方也是你。
+四项常用的能力  总结 推理 转换 扩展  Temperature 一个模型的参数，会影响相应的随机性或者说多样性 例如输入我最爱吃的食物，Temperature为0是会选择输出评分最高的答案披萨。 我们提升Temperature后，排序靠后的一些答案也会被输出，这个参数解决答案的“饥饿”问题。 构建可靠可预测的系统时，这个参数应被设置为0
+多轮对话的构成 我们每一次提交的message包含如下几个部分
+{ &amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;你好&amp;#34; } #+end_src&amp;gt; 其中role有三种，分别为system，assistant，user。 user代表用户的输入内容，assistant是模型的输出内容，system用于对assistant进行声明设定，是层次更高程的meta。 那么一段对话可以表示为： #+begin_src json [ { &amp;#34;role&amp;#34;: &amp;#34;system&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;你是一个逗逼&amp;#34; }, { &amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;给我讲个笑话&amp;#34; }, { &amp;#34;role&amp;#34;: &amp;#34;assistant&amp;#34;, &amp;#34;content&amp;#34;: &amp;#34;从前.</description>
+    </item>
+    
+    <item>
+      <title>写一篇博客</title>
+      <link>https://meepoljd.github.io/posts/%E5%86%99%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 21 Jun 2024 15:54:49 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/posts/%E5%86%99%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>装修计划</title>
+      <link>https://meepoljd.github.io/posts/interior-finish/</link>
+      <pubDate>Thu, 21 Mar 2024 09:26:45 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/posts/interior-finish/</guid>
+      <description>预算盘点  我们要在这件事上花多少钱，影响后续的流程决策
+ 决策点  全包 or 半包  流程 选材备忘 排期 杂项问题  楼道拐角是否会影响长板材进场 流程有了，看起来大差不差，主材采购时间点，我们什么时候去买什么 防盗门什么时候进场 有哪些需要跟物业打交道 不能太较真，太较真就觉得哪都是坑 from cz   Ref   干货必看！史上最全装修流程。另附施工秘诀，值得收藏！_家装主材_什么值得买 (smzdm.com)
+  教你分清清包、半包、全包三种装修方式 - 知乎 (zhihu.com)
+  </description>
+    </item>
+    
+    <item>
+      <title>关于aPaaS平台的思考</title>
+      <link>https://meepoljd.github.io/posts/what-is-apaas/</link>
+      <pubDate>Wed, 20 Mar 2024 19:11:14 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/posts/what-is-apaas/</guid>
+      <description>什么是Builder Builder scope划分我的认知里，是从前端视角产生的，基于组件编辑产生DSL，并且解析DSL产出页面。
+从一个更中立的视角来看，其实这是两件事，IDE与运行容器。而这两者之间，隐含了一个不被重视的服务端工作，就是DSL的持久化与维护。
+产品演进  前身是kunlun 我们是服务B端的，少数大客户的边缘Case也是要处理的，或者说很重要 我们曾经在两个路径里摇摆，服务字节还是搞好商业化 这一年的主题，删繁就简 支持了电商，但又抛弃了电商 6月接客  前端演进   1.0 2.0 3.0
+  没法纠结技术细节，前端内容不是很懂，投入研究的ROI太低了。
+  技术现状  由于之前一直没有服务端团队，所以所有的资料都是从前端视角来做的。尽快完成一份服务端的梳理与规划文档十分关键
+ 设计态  核心问题，一个页面有哪些信息来描述，保存在哪里
+从PageConfig的存在，可以初步总结Builder的服务端在这里有两个核心职责：
+  数据的持久化，未来的协同编辑，增量存储等
+  IDE的体验支持（既然叫IDE，有什么是本地解决不了的，我在把自己越做越薄？）
+   基于现有的资料：
+页面=基本信息+UIDL+Page Config
+  基本信息：页面的标题描述等
+  UIDL：对页面内容的定义
+  Page Config：服务端需要感知的内容，导航信息，权限树，多语言，环境变量等。
+  我的问题：
+  这个划分逻辑是否合理，Page Config看起来更像是Index，用来辅助IDE运行提示。是否应该影响页面本身的定义与组织
+  写入时机是否合理，page config的实时性要求是什么样的。检索UIDL生产page config保存的设计是否合理。
+  如果UIDL只能全量保存，就不应当支持并发编辑。进一步的page config的开发辅助功能可以本地进行。为什么要向服务端投递。</description>
+    </item>
+    
+    <item>
+      <title>尝试读懂Go ASM</title>
+      <link>https://meepoljd.github.io/posts/go-asm/</link>
+      <pubDate>Sun, 28 Jan 2024 22:53:59 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/posts/go-asm/</guid>
+      <description>问题 某同学在日常工作中写出了一段十分诡异的代码，在CR中产生的激烈讨论。
+var a = map[string]string{} func main() { go func() { v := a[&amp;#34;key1&amp;#34;] log.Println(v) }() go func() { b := make(map[string]string) a = b }() } 显然，在工作中写出这种有明显争议的代码是十分不好的，但如何证明这段代码确实不会panic也确实是个问题。
+思路 与其研究各种语法特性，不如借机研究一下Go的汇编，通过更底层的行为描述确认运行时的行为。
+验证 以下代码解释参考了GPT的结果，AI改变世界~
+Go汇编引入了4个伪寄存器，这4个寄存器时编译器用来维护上下文、特殊标识等作用的
+  FP(Frame pointer):记录栈帧的初始地址，用于访问函数的参数与局部变量
+  PC(Program counter):记录当前正在执行的指令，控制执行流程
+  SB(Static base pointer):SB指向了可执行程序的数据段的开始。用于访问全局变量和函数地址。
+  SP(Stack pointer):栈顶，用于管理调用栈
+  首先声明一个main方法
+0x0000 00000 (main.go:5) TEXT main.main(SB), ABIInternal, $32-0 // TEXT 包名.方法名(SB 这是基于静态地址的数据), ABIInternal, $栈帧大小-参数及返回值大小 栈帧大小如何计算
+PCDATA $0, $-2 CMP R16, RSP BLS 60 // Branch if Lower or Same PCDATA $0, $-1 一段费解的代码，由于CMP命令会产生标志位变化，但不会计算得到一个值，为了垃圾回收器和其他运行时组件能够正确地解释生成的代码，使用PCDATA命令插入一个标记。</description>
+    </item>
+    
     <item>
       <title>使用Hugo快速搭建一个免费的静态博客</title>
       <link>https://meepoljd.github.io/posts/how-to-build-personal-website/</link>
       <pubDate>Tue, 23 Jan 2024 20:52:53 +0800</pubDate>
+      
       <guid>https://meepoljd.github.io/posts/how-to-build-personal-website/</guid>
       <description>为了方便迁移，不被各种笔记软件绑架，所以最近将笔记内容都迁移到一个Markdown仓库进行管理。顺便的使用Hugo将这些笔记搭建一个个人博客。
 本文用于记录搭建过程中的一些操作，面向有开发基础的同学，不会再讲解什么是Git。
-环境搭建 Git
-一个顺手的编辑器（为什么不试试Emacs呢）
+ 环境搭建   Git
+  一个顺手的编辑器（为什么不试试Emacs呢）
 hugo 安装Hugo，Mac用户可以直接
 brew install hugo 为了方便使用，在创建站点时加入--format yaml，来指定配置文件的格式
 hugo new site MyWebsite --format yaml Hugo 会在目录查找一个 config.toml 的配置文件。如果这个文件不存在，将会查找 config.yaml，然后是 config.json 。
 主题配置 审美问题，实在不知道选什么，所以选择了一个人气较高的主题PaperMod。参考官方文档来进行安装。
-Hugo的主题被存放在 MyWebsite/themes 目录下，可使用git clone 将代码拉下来
+  Hugo的主题被存放在 MyWebsite/themes 目录下，可使用git clone 将代码拉下来
 git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1 在 config.yml 加入如下的内容来指定使用的主题
-theme: [&amp;#34;PaperMod&amp;#34;] 文章模板 hugo的模板文件位于archetypes文件夹中，其中有一个default.md文件，修改内容如下
---- title: &amp;#34;{{ replace .Name &amp;#34;-&amp;#34; &amp;#34; &amp;#34; | title }}&amp;#34; date: {{ .Date }} lastmod: {{ .Date }} author: [&amp;#34;jiandong.liu93&amp;#34;] categories: - category 1 - category 2 tags: - tag 1 - tag 2 keywords: - word 1 - word 2 description: &amp;#34;&amp;#34; # 文章描述，与搜索优化相关 summary: &amp;#34;&amp;#34; # 文章简单描述，会展示在主页 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序 slug: &amp;#34;&amp;#34; draft: true # 是否为草稿 comments: false showToc: true # 显示目录 TocOpen: true # 自动展开目录 autonumbering: true # 目录自动编号 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等 disableShare: true # 底部不显示分享栏 searchHidden: true # 该页面可以被搜索到 showbreadcrumbs: true #顶部显示当前路径 mermaid: true cover: image: &amp;#34;&amp;#34; caption: &amp;#34;&amp;#34; alt: &amp;#34;&amp;#34; relative: false --- 自定义 为网站进行一些个性化的配置，比如上几个要饭的二维码。可以使用主题官方提供的配置文件模板。</description>
-      <content:encoded><![CDATA[<blockquote>
-<p>为了方便迁移，不被各种笔记软件绑架，所以最近将笔记内容都迁移到一个Markdown仓库进行管理。顺便的使用Hugo将这些笔记搭建一个个人博客。</p>
-<p>本文用于记录搭建过程中的一些操作，面向有开发基础的同学，不会再讲解什么是Git。</p>
-</blockquote>
-<h1 id="环境搭建">环境搭建</h1>
-<ol>
-<li>
-<p>Git</p>
-</li>
-<li>
-<p>一个顺手的编辑器（为什么不试试Emacs呢）</p>
-<h2 id="hugo">hugo</h2>
-<p>安装Hugo，Mac用户可以直接</p>
-<pre tabindex="0"><code>brew install hugo
-</code></pre><p>为了方便使用，在创建站点时加入<code>--format yaml</code>，来指定配置文件的格式</p>
-<pre tabindex="0"><code>hugo new site MyWebsite --format yaml
-</code></pre><p>Hugo 会在目录查找一个 config.toml 的配置文件。如果这个文件不存在，将会查找 config.yaml，然后是 config.json 。</p>
-<h2 id="主题配置">主题配置</h2>
-<p>审美问题，实在不知道选什么，所以选择了一个人气较高的主题PaperMod。参考<a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Installation">官方文档</a>来进行安装。</p>
-</li>
-</ol>
-<p>Hugo的主题被存放在 MyWebsite/themes 目录下，可使用git clone 将代码拉下来</p>
-<pre tabindex="0"><code>git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
-</code></pre><p>在 config.yml 加入如下的内容来指定使用的主题</p>
-<pre tabindex="0"><code>theme: [&#34;PaperMod&#34;]
-</code></pre><h2 id="文章模板">文章模板</h2>
-<p>hugo的模板文件位于archetypes文件夹中，其中有一个default.md文件，修改内容如下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span><span class="w"> </span><span class="s2">&#34; | title }}&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span>{{<span class="w"> </span><span class="l">.Date }}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">lastmod</span><span class="p">:</span><span class="w"> </span>{{<span class="w"> </span><span class="l">.Date }}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;jiandong.liu93&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">category 1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">category 2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">tag 1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">tag 2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">keywords</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">word 1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">word 2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w"> </span><span class="c"># 文章描述，与搜索优化相关</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w"> </span><span class="c"># 文章简单描述，会展示在主页</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="c"># 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">draft</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 是否为草稿</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">showToc</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 显示目录</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">TocOpen</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 自动展开目录</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">autonumbering</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 目录自动编号</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">hidemeta</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># 是否隐藏文章的元信息，如发布日期、作者等</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">disableShare</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 底部不显示分享栏</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">searchHidden</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 该页面可以被搜索到</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">showbreadcrumbs</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c">#顶部显示当前路径</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">mermaid</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cover</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">caption</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">alt</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">relative</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
-</span></span></span></code></pre></div><h2 id="自定义">自定义</h2>
-<p>为网站进行一些个性化的配置，比如上几个要饭的二维码。可以使用主题官方提供的<a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml">配置文件模板</a>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://meepoljd.github.io/&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">老东叔写代码</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">paginate</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">PaperMod</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">enableRobotsTXT</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">buildDrafts</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">buildFuture</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">buildExpired</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">googleAnalytics</span><span class="p">:</span><span class="w"> </span><span class="l">UA-123-45</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">minify</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">disableXML</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">minifyOutput</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l">production</span><span class="w"> </span><span class="c"># to enable google analytics, opengraph, twitter-cards and schema.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">老东叔写代码</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;埋藏无处安放的思绪&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">keywords</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">Blog, Golang, Develop]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">jiandong.liu93</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># author: [&#34;Me&#34;, &#34;You&#34;] # multiple authors</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;&lt;link or path of image for opengraph, twitter-cards&gt;&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">DateFormat</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;January 2, 2006&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">defaultTheme</span><span class="p">:</span><span class="w"> </span><span class="l">auto</span><span class="w"> </span><span class="c"># dark, light</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">disableThemeToggle</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowReadingTime</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowShareButtons</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowPostNavLinks</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowBreadCrumbs</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowCodeCopyButtons</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowWordCount</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowRssButtonInSectionTermList</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ShowFullTextinRSS</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">UseHugoToc</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">disableSpecial1stPost</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">disableScrollToTop</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hidemeta</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hideSummary</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">showtoc</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tocopen</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">assets</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># disableHLJS: true # to disable highlight.js</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># disableFingerprinting: true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">favicon</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;link / abs url&gt;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">favicon16x16</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;link / abs url&gt;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">favicon32x32</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;link / abs url&gt;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apple_touch_icon</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;link / abs url&gt;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">safari_pinned_tab</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;link / abs url&gt;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">label</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Home&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">/apple-touch-icon.png</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">iconHeight</span><span class="p">:</span><span class="w"> </span><span class="m">35</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># home-info mode</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">homeInfoParams</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Hi there \U0001F44B&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Content</span><span class="p">:</span><span class="w"> </span><span class="l">玄都观里花千树，尽是刘郎去后栽</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">socialIcons</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://github.com/Meepoljd&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">analytics</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">google</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SiteVerificationTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;XYZabc&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">bing</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SiteVerificationTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;XYZabc&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">yandex</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SiteVerificationTag</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;XYZabc&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cover</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hidden</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># hide everywhere but not in structured data</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hiddenInList</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># hide on list pages and home</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hiddenInSingle</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># hide on single page</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># for search</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># https://fusejs.io/api/options.html</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">fuseOpts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">isCaseSensitive</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">shouldSort</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">distance</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">threshold</span><span class="p">:</span><span class="w"> </span><span class="m">0.4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">minMatchCharLength</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">limit: 10 # refer</span><span class="p">:</span><span class="w"> </span><span class="l">https://www.fusejs.io/api/methods.html#search</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">keys</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;title&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;permalink&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;summary&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;content&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">menu</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">main</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l">search</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Search</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">/search/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l">archives</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Archive</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">/archives/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l">tags</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Tags</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">/tags/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">pygmentsUseClasses</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">markup</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">highlight</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noClasses</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># anchorLineNos: true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># codeFences: true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># guessSyntax: true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># lineNos: true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># style: monokai</span><span class="w">
-</span></span></span></code></pre></div><h2 id="搜索功能">搜索功能</h2>
-<p>根据<a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Features#search-page">官网文档</a>，需要插入一个页面进行配置。</p>
-<p>向config.yml中添加如下内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">HTML</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">RSS</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">JSON</span><span class="w"> </span><span class="c"># necessary for search</span><span class="w">
-</span></span></span></code></pre></div><p>之后在content中新建search.md文件，并插入如下内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Search&#34;</span><span class="w"> </span><span class="c"># in any language you want</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;search&#34;</span><span class="w"> </span><span class="c"># necessary for search</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># url: &#34;/archive&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># description: &#34;Description for Search&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;search&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">placeholder</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;placeholder text in search input box&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
-</span></span></span></code></pre></div><h2 id="归档页">归档页</h2>
-<p>根据<a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Features#archives-layout">官方文档</a>，向content目录下插入archives.md文件。插入内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Archive&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;archives&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/archives/&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l">archives</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
-</span></span></span></code></pre></div><h1 id="更新部署">更新部署</h1>
-<h2 id="gihubpages">GihubPages</h2>
-<p>在跟老婆申请换了电脑之后，就没有预算购买服务器了。因此选择将网站部署在免费的<a href="https://docs.github.com/zh/pages/getting-started-with-github-pages">Github pages</a>。</p>
-<blockquote>
-<p>GitHub Pages 是一项静态站点托管服务，它直接从 GitHub 上的仓库获取 HTML、CSS 和 JavaScript 文件，（可选）通过构建过程运行文件，然后发布网站。 可以在 GitHub Pages 示例集合中看到 GitHub Pages 站点的示例。</p>
-</blockquote>
-<h2 id="github-action">Github Action</h2>
-<p>为了实现推送代码后，自动部署更新网站。参考Hugo官网推荐的方案，配置Github Action。</p>
-<p>在网站根目录内创建<code>.github/workflows/hugo.yaml</code>文件，复制如下内容。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># Sample workflow for building and deploying a Hugo site to GitHub Pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Hugo site to Pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Runs on pushes targeting the default branch</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Allows you to run this workflow manually from the Actions tab</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">permissions</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l">read</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">concurrency</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;pages&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Default to bash</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">defaults</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l">bash</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Build job</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">HUGO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="m">0.122.0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Hugo CLI</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span></span></span><span class="line"><span class="cl"><span class="sd">          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-</span></span></span><span class="line"><span class="cl"><span class="sd">          &amp;&amp; sudo dpkg -i ${{ runner.temp }}/hugo.deb          </span><span class="w">          
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Dart Sass</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">sudo snap install dart-sass</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="l">recursive</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/configure-pages@v4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Node.js dependencies</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;[[ -f package-lock.json || -f npm-shrinkwrap.json ]] &amp;&amp; npm ci || true&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build with Hugo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># For maximum backward compatibility with Hugo modules</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">HUGO_ENVIRONMENT</span><span class="p">:</span><span class="w"> </span><span class="l">production</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">HUGO_ENV</span><span class="p">:</span><span class="w"> </span><span class="l">production</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span></span></span><span class="line"><span class="cl"><span class="sd">          hugo \
-</span></span></span><span class="line"><span class="cl"><span class="sd">            --gc \
-</span></span></span><span class="line"><span class="cl"><span class="sd">            --minify \
-</span></span></span><span class="line"><span class="cl"><span class="sd">            --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;          </span><span class="w">          
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload artifact</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/upload-pages-artifact@v2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Deployment job</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github-pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.deployment.outputs.page_url }}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to GitHub Pages</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">deployment</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/deploy-pages@v3</span><span class="w">
-</span></span></span></code></pre></div><h1 id="finally">Finally</h1>
-<p>一个简易的个人博客就搭建完成了</p>
-]]></content:encoded>
+theme: [&amp;quot;PaperMod&amp;quot;] 文章模板 hugo的模板文件位于archetypes文件夹中，其中有一个default.md文件，修改内容如下
+---title:&amp;#34;{{ replace .Name &amp;#34;-&amp;#34; &amp;#34;&amp;#34; | title }}&amp;#34;date:{{.Date }}lastmod:{{.Date }}author:[&amp;#34;jiandong.liu93&amp;#34;]categories:- category 1- category 2tags:- tag 1- tag 2keywords:- word 1- word 2description:&amp;#34;&amp;#34;# 文章描述，与搜索优化相关summary:&amp;#34;&amp;#34;# 文章简单描述，会展示在主页weight:# 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序slug:&amp;#34;&amp;#34;draft:true# 是否为草稿comments:falseshowToc:true# 显示目录TocOpen:true# 自动展开目录autonumbering:true# 目录自动编号hidemeta:false# 是否隐藏文章的元信息，如发布日期、作者等disableShare:true# 底部不显示分享栏searchHidden:true# 该页面可以被搜索到showbreadcrumbs:true#顶部显示当前路径mermaid:truecover:image:&amp;#34;&amp;#34;caption:&amp;#34;&amp;#34;alt:&amp;#34;&amp;#34;relative:false---自定义 为网站进行一些个性化的配置，比如上几个要饭的二维码。可以使用主题官方提供的配置文件模板。</description>
     </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://meepoljd.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://meepoljd.github.io/archives/</guid>
+      <description>archives</description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://meepoljd.github.io/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://meepoljd.github.io/search/</guid>
+      <description>search</description>
+    </item>
+    
   </channel>
 </rss>

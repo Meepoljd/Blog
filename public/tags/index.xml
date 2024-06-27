@@ -4,13 +4,52 @@
     <title>Tags on 老东叔写代码</title>
     <link>https://meepoljd.github.io/tags/</link>
     <description>Recent content in Tags on 老东叔写代码</description>
-    <image>
-      <title>老东叔写代码</title>
-      <url>https://meepoljd.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://meepoljd.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://meepoljd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jun 2024 21:40:27 +0800</lastBuildDate><atom:link href="https://meepoljd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://meepoljd.github.io/tags/ai/</link>
+      <pubDate>Thu, 27 Jun 2024 21:40:27 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prompt</title>
+      <link>https://meepoljd.github.io/tags/prompt/</link>
+      <pubDate>Thu, 27 Jun 2024 21:40:27 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/tags/prompt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://meepoljd.github.io/tags/life/</link>
+      <pubDate>Thu, 21 Mar 2024 09:26:45 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aPaaS</title>
+      <link>https://meepoljd.github.io/tags/apaas/</link>
+      <pubDate>Wed, 20 Mar 2024 19:11:14 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/tags/apaas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://meepoljd.github.io/tags/golang/</link>
+      <pubDate>Sun, 28 Jan 2024 22:53:59 +0800</pubDate>
+      
+      <guid>https://meepoljd.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
