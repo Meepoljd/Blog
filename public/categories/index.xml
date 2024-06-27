@@ -4,25 +4,6 @@
     <title>Categories on 老东叔写代码</title>
     <link>https://meepoljd.github.io/categories/</link>
     <description>Recent content in Categories on 老东叔写代码</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 27 Jun 2024 21:40:27 +0800</lastBuildDate><atom:link href="https://meepoljd.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tech</title>
-      <link>https://meepoljd.github.io/categories/tech/</link>
-      <pubDate>Thu, 27 Jun 2024 21:40:27 +0800</pubDate>
-      
-      <guid>https://meepoljd.github.io/categories/tech/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>随笔</title>
-      <link>https://meepoljd.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
-      <pubDate>Fri, 21 Jun 2024 15:54:49 +0800</pubDate>
-      
-      <guid>https://meepoljd.github.io/categories/%E9%9A%8F%E7%AC%94/</guid>
-      <description></description>
-    </item>
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://meepoljd.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
