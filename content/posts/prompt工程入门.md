@@ -1,7 +1,7 @@
 +++
 title = "Prompt工程入门"
 author = ["LAPTOP-D0OQP29H"]
-lastmod = 2024-06-27T21:45:51+08:00
+lastmod = 2024-06-27T21:49:29+08:00
 tags = ["AI", "Prompt"]
 categories = ["Tech"]
 draft = false
@@ -73,16 +73,16 @@ toc = true
 
 我们每一次提交的message包含如下几个部分
 
-```json
+```js
 {
         "role": "user",
         "content": "你好"
 }
-#+end_src>
+```
 其中role有三种，分别为system，assistant，user。
 user代表用户的输入内容，assistant是模型的输出内容，system用于对assistant进行声明设定，是层次更高程的meta。
 那么一段对话可以表示为：
-#+begin_src json
+```
 [
  {
         "role": "system",
