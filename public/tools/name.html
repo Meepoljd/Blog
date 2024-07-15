@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>汉字拼音选择器</title>
+    <style>
+        .marquee {
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .marquee span {
+            animation: marquee linear infinite 10s;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="marquee" @mouseover="pauseMarquee" @mouseout="resumeMarquee">
+            <span>{{ currentShengmu }}</span>
+        </div>
+        <div class="marquee" @mouseover="pauseMarquee" @mouseout="resumeMarquee">
+            <span>{{ currentYunmu }}</span>
+        </div>
+        <div class="marquee" @mouseover="pauseMarquee" @mouseout="resumeMarquee">
+            <span>{{ currentShengdiao }}</span>
+        </div>
+        <div id="output">
+            已选择的声母: <span>{{ selectedShengmu }}</span><br>
+            已选择的韵母: <span>{{ selectedYunmu }}</span><br>
+            已选择的声调: <span>{{ selectedShengdiao }}</span>
+        </div>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> 
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                shengmu: ['b', 'p', 'm', 'f', 'd', 't', 'n'],
+                yunmu: ['a', 'o', 'e', 'i', 'u', 'ü'],
+                shengdiao: ['1', '2', '3', '4'],
+                currentShengmuIndex: 0,
+                currentYunmuIndex: 0,
+                currentShengdiaoIndex: 0,
+                selectedShengmu: '',
+                selectedYunmu: '',
+                selectedShengdiao: '',
+                marqueePaused: false
+            },
+            methods: {
+                pauseMarquee() {
+                    this.marqueePaused = true;
+                },
+                resumeMarquee() {
+                    this.marqueePaused = false;
+                    this.updateCurrentShengmu();
+                    this.updateCurrentYunmu();
+                    this.updateCurrentShengdiao();
+                },
+                updateCurrentShengmu() {
+                    if (!this.marqueePaused) {
+                        this.currentShengmuIndex = (this.currentShengmuIndex + 1) % this.shengmu.length;
+                        this.currentShengmu = this.shengmu[this.currentShengmuIndex];
+                        setTimeout(this.updateCurrentShengmu, 100); // Adjust timing as needed
+                    }
+                },
+                updateCurrentYunmu() {
+                    if (!this.marqueePaused) {
+                        this.currentYunmuIndex = (this.currentYunmuIndex + 1) % this.yunmu.length;
+                        this.currentYunmu = this.yunmu[this.currentYunmuIndex];
+                        setTimeout(this.updateCurrentYunmu, 100); // Adjust timing as needed
+                    }
+                },
+                updateCurrentShengdiao() {
+                    if (!this.marqueePaused) {
+                        this.currentShengdiaoIndex = (this.currentShengdiaoIndex + 1) % this.shengdiao.length;
+                        this.currentShengdiao = this.shengdiao[this.currentShengdiaoIndex];
+                        setTimeout(this.updateCurrentShengdiao, 100); // Adjust timing as needed
+                    }
+                },
+                selectCurrent(type) {
+                    switch (type) {
+                        case 'shengmu':
+                            this.selectedShengmu = this.currentShengmu;
+                            break;
+                        case 'yunmu':
+                            this.selectedYunmu = this.currentYunmu;
+                            break;
+                        case 'shengdiao':
+                            this.selectedShengdiao = this.currentShengdiao;
+                            break;
+                    }
+                },
+                handleKeyPress(event) {
+                    if (event.keyCode === 32) {
+                        const types = ['shengmu', 'yunmu', 'shengdiao'];
+                        let currentTypeIndex = types.indexOf(this.currentSelection);
+                        if (currentTypeIndex === -1) {
+                            currentTypeIndex = 0;
+                        }
+                        this.selectCurrent(types[currentTypeIndex]);
+                        this.currentSelection = types[(currentTypeIndex + 1) % 3];
+                    }
+                },
+                setCurrentSelection() {
+                    const types = ['shengmu', 'yunmu', 'shengdiao'];
+                    this.currentSelection = types.find(type => 
+                        (this.selectedShengmu && type === 'shengmu') ||
+                        (this.selectedYunmu && type === 'yunmu') ||
+                        (this.selectedShengdiao && type === 'shengdiao')
+                    ) || types[0];
+                }
+            },
+            computed: {
+                currentShengmu: function() {
+                    return this.shengmu[this.currentShengmuIndex];
+                },
+                currentYunmu: function() {
+                    return this.yunmu[this.currentYunmuIndex];
+                },
+                currentShengdiao: function() {
+                    return this.shengdiao[this.currentShengdiaoIndex];
+                }
+            },
+            mounted() {
+                document.addEventListener('keydown', this.handleKeyPress);
+                this.updateCurrentShengmu();
+                this.updateCurrentYunmu();
+                this.updateCurrentShengdiao();
+                this.setCurrentSelection();
+            },
+            beforeDestroy() {
+                document.removeEventListener('keydown', this.handleKeyPress);
+            }
+        });
+    </script>
+</body>
+</html>
